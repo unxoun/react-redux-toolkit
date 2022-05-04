@@ -5,15 +5,14 @@ const slice = createSlice({
   // name, structures the action type like: <name>/<actionCreatorName>
   // here an action would be like: {type: "count/incrementedBy1"}
   name: "color",
-  // Redux Toolkit uses Immer library to handle teh direct mutation of the state.
-  // Due to Immer patterns, if the slice state is a primitive (e.g. a number)-
-  // and not an object, the reducer functions must "return" the new state.
-  // But, if the slice state is an object, no need to return the new state.
+  // Redux Toolkit uses Immer library to handle the direct mutation of the state.
+  // Due to Immer patterns, eighther a new state can be returned OR the state's-
+  // members can be mutated.
   initialState: "green",
   reducers: {
     changedToRed: (state, action) => {
-      // Because the state is defined as a primitive, the reducer must-
-      // "return" the new state:
+      // Here the a New State is RETURNED because the state is defined as a primitive-
+      // and, does not have any member to be mutated!      
       const payload = action.payload; // = action creator's argument when invoked in a component.
       return "red";
     },
