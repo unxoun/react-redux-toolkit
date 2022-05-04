@@ -12,13 +12,14 @@ const slice = createSlice({
   initialState: { value: 0 },
   reducers: {
     incrementBy1: (state, action) => {
-      // Instead of RETURNING a New State, the state member was mutated:    
+      // Instead of returning a new state, the state member is mutated:    
       const payload = action.payload; // = action creator's argument when invoked in a component.
-      state = state + 1;
+      state.value = state.value + 1;
     },
     incrementBy10: (state, action) => {
+      // Instead of mutating the state's member, a new state is returned:
       const payload = action.payload;
-      return (state = state + 10);
+      return {value: state.value + 10};
     },
   },
 });
